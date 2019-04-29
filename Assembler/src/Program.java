@@ -15,6 +15,10 @@ public class Program {
 
         for(String line:file){
 
+            line = removeComments(line);
+            line = line.replace(" ", "");
+            if(line.equals("")) continue;
+
             if(line.startsWith("@")){
                 instructions.add(parseAsAInstruction(line));
             }
@@ -22,6 +26,13 @@ public class Program {
                 instructions.add(parseAsCInstruction(line));
             }
         }
+    }
+
+    private String removeComments(String line) {
+        if(line.contains("//")){
+            line = line.substring(0, line.indexOf("//"));
+        }
+        return line;
     }
 
     private CInstruction parseAsCInstruction(String cmd) {
