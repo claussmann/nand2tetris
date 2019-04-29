@@ -1,3 +1,6 @@
 A=M+D
 D=A
 A-D;JEQ
+@1
+@abc
+A;JNE
