@@ -16,6 +16,18 @@ public class Program {
     public Program(){
         labels = new ArrayList<>();
         instructions= new ArrayList<>();
+
+        labels.add(new Label("SP",0));
+        labels.add(new Label("LCL",1));
+        labels.add(new Label("ARG",2));
+        labels.add(new Label("THIS",3));
+        labels.add(new Label("THAT",4));
+        labels.add(new Label("SCREEN",16384));
+        labels.add(new Label("KBD",24576));
+        for(int i=0; i<16; i++){
+            //R0-R15
+            labels.add(new Label("R"+i,i));
+        }
     }
 
     public void assemble(Collection<String> file) {
