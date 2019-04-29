@@ -45,6 +45,16 @@ public class Program {
                 instructions.add(parseAsCInstruction(line));
             }
         }
+        finalizeLabels();
+    }
+
+    private void finalizeLabels() {
+        for (Label label : labels) {
+            if(label.getAddress()==-1){
+                label.setAddress(nextLabelAddress);
+                nextLabelAddress++;
+            }
+        }
     }
 
     private void setLabelAddress(String labelname) {
@@ -83,12 +93,11 @@ public class Program {
     }
 
     private Label resolveLabel(String aInstruction) {
-        Label label = new Label(aInstruction, nextLabelAddress);
+        Label label = new Label(aInstruction, -1);
         if (labels.contains(label)) {
             Label found = labels.get(labels.indexOf(label));
             return found;
         }
-        nextLabelAddress++;
         labels.add(label);
         return label;
     }
