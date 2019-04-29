@@ -12,7 +12,7 @@ public class Jump {
             case "JGT":
                 binary = "001";
                 break;
-            case "JEG":
+            case "JEQ":
                 binary = "010";
                 break;
             case "JGE":
