@@ -2,7 +2,10 @@ import Instructions.AInstruction;
 import Instructions.CInstruction;
 import Instructions.Instruction;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -11,7 +14,7 @@ public class Assembler {
     private static String inputfile;
     private static String outputfile;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
         if(args.length == 0){
             System.out.printf("No input file given");
             System.exit(1);
@@ -27,6 +30,6 @@ public class Assembler {
 
         Program program = new Program();
         program.assemble(file);
-        program.toBinary(System.out);
+        program.toBinary(new PrintStream(new FileOutputStream(inputfile+".hack")));
     }
 }
