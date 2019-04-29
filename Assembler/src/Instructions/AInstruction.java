@@ -21,7 +21,7 @@ public class AInstruction extends Instruction {
         }
         String ret = Integer.toBinaryString(value);
         if(ret.length()>15){
-            ret = ret.substring(ret.length()-15, ret.length());
+            ret = ret.substring(ret.length()-15);
         }
         while (ret.length()<16){
             ret="0" + ret;
