@@ -1,0 +1,3 @@
+A=M+D
+D=A
+A-D;JEQ

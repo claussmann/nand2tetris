@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.Collection;
+
 public class Assembler {
 
     private static String inputfile;
@@ -9,6 +12,13 @@ public class Assembler {
             System.exit(1);
         }
         inputfile = args[0];
+        Collection<String> file = null;
+        try {
+            file = FileInput.readAllLines(inputfile);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
 
     }
 }
