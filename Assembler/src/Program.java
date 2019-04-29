@@ -40,6 +40,7 @@ public class Program {
             if(line.startsWith("@")){
                 instructions.add(parseAsAInstruction(line));
             }
+
             else {
                 instructions.add(parseAsCInstruction(line));
             }
@@ -59,24 +60,22 @@ public class Program {
 
     private AInstruction parseAsAInstruction(String cmd){
         String aInstruction = cmd.replace("@", "");
-        int value;
         try{
-            value = Integer.parseInt(aInstruction);
+            return new AInstruction(Integer.parseInt(aInstruction));
         }catch (Exception e){
-            value = resolveLabel(aInstruction);
+            return new AInstruction(resolveLabel(aInstruction));
         }
-        return new AInstruction(value);
     }
 
-    private int resolveLabel(String aInstruction) {
+    private Label resolveLabel(String aInstruction) {
         Label label = new Label(aInstruction, nextLabelAddress);
         if(labels.contains(label)){
             Label found = labels.get(labels.indexOf(label));
-            return found.getAddress();
+            return found;
         }
         nextLabelAddress++;
         labels.add(label);
-        return label.getAddress();
+        return label;
     }
 
     public void toBinary(PrintStream out) {
