@@ -13,42 +13,57 @@ public class Program {
     private ArrayList<Label> labels;
     private int nextLabelAddress = 16;
 
-    public Program(){
+    public Program() {
         labels = new ArrayList<>();
-        instructions= new ArrayList<>();
+        instructions = new ArrayList<>();
 
-        labels.add(new Label("SP",0));
-        labels.add(new Label("LCL",1));
-        labels.add(new Label("ARG",2));
-        labels.add(new Label("THIS",3));
-        labels.add(new Label("THAT",4));
-        labels.add(new Label("SCREEN",16384));
-        labels.add(new Label("KBD",24576));
-        for(int i=0; i<16; i++){
+        labels.add(new Label("SP", 0));
+        labels.add(new Label("LCL", 1));
+        labels.add(new Label("ARG", 2));
+        labels.add(new Label("THIS", 3));
+        labels.add(new Label("THAT", 4));
+        labels.add(new Label("SCREEN", 16384));
+        labels.add(new Label("KBD", 24576));
+        for (int i = 0; i < 16; i++) {
             //R0-R15
-            labels.add(new Label("R"+i,i));
+            labels.add(new Label("R" + i, i));
         }
     }
 
     public void assemble(Collection<String> file) {
-        for(String line:file){
+        for (String line : file) {
 
             line = removeComments(line);
             line = line.replace(" ", "");
-            if(line.equals("")) continue;
+            if (line.equals("")) continue;
 
-            if(line.startsWith("@")){
+            if (line.startsWith("@")) {
                 instructions.add(parseAsAInstruction(line));
-            }
-
-            else {
+            } else if (line.startsWith("(")) {
+                setLabelAddress(line);
+            } else {
                 instructions.add(parseAsCInstruction(line));
             }
         }
     }
 
+    private void setLabelAddress(String labelname) {
+        labelname = labelname.replace("(", "");
+        labelname = labelname.replace(")", "");
+
+        int currentInstructionAddress = instructions.size();
+
+        Label label = new Label(labelname, currentInstructionAddress);
+        if (labels.contains(label)) {
+            Label found = labels.get(labels.indexOf(label));
+            found.setAddress(currentInstructionAddress);
+        } else {
+            labels.add(label);
+        }
+    }
+
     private String removeComments(String line) {
-        if(line.contains("//")){
+        if (line.contains("//")) {
             line = line.substring(0, line.indexOf("//"));
         }
         return line;
@@ -58,18 +73,18 @@ public class Program {
         return new CInstruction(cmd);
     }
 
-    private AInstruction parseAsAInstruction(String cmd){
+    private AInstruction parseAsAInstruction(String cmd) {
         String aInstruction = cmd.replace("@", "");
-        try{
+        try {
             return new AInstruction(Integer.parseInt(aInstruction));
-        }catch (Exception e){
+        } catch (Exception e) {
             return new AInstruction(resolveLabel(aInstruction));
         }
     }
 
     private Label resolveLabel(String aInstruction) {
         Label label = new Label(aInstruction, nextLabelAddress);
-        if(labels.contains(label)){
+        if (labels.contains(label)) {
             Label found = labels.get(labels.indexOf(label));
             return found;
         }
@@ -79,7 +94,7 @@ public class Program {
     }
 
     public void toBinary(PrintStream out) {
-        for(Instruction instruction : instructions){
+        for (Instruction instruction : instructions) {
             out.println(instruction.toBinary());
         }
     }

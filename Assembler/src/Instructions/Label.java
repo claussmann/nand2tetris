@@ -21,4 +21,8 @@ public class Label {
             return false;
         }
     }
+
+    public void setAddress(int currentInstructionAddress) {
+        this.address = currentInstructionAddress;
+    }
 }
