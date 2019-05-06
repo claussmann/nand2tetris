@@ -3,9 +3,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class FileInput {
-    public static Collection<String> readAllLines(String filename) throws IOException {
+    public static List<String> readAllLines(String filename) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         ArrayList<String> lines = new ArrayList<>();
 

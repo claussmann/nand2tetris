@@ -1,5 +1,5 @@
 import java.io.IOException;
-import java.util.Collection;
+import java.util.List;
 
 public class VMTranslator {
 
@@ -9,7 +9,7 @@ public class VMTranslator {
             System.exit(1);
         }
         String inputfile = args[0];
-        Collection<String> file = null;
+        List<String> file = null;
         try {
             file = FileInput.readAllLines(inputfile);
         } catch (IOException e) {
