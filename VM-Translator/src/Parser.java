@@ -39,29 +39,22 @@ public class Parser {
         switch (s) {
             case "constant":
                 return MemSegment._constant;
-                break;
             case "local":
                 return MemSegment._local;
-                break;
             case "argument":
                 return MemSegment._argument;
-                break;
             case "this":
                 return MemSegment._this;
-                break;
             case "that":
                 return MemSegment._that;
-                break;
             case "static":
                 return MemSegment._static;
-                break;
             case "temp":
                 return MemSegment._temp;
-                break;
             case "pointer":
                 return MemSegment._pointer;
-                break;
         }
+        return MemSegment._constant;
     }
 
 
