@@ -25,3 +25,9 @@ hs_err_pid*
 #intellij
 .idea/*
 *.iml
+
+#
+*.txt
+*.hack
+*.asm
+*.vm
