@@ -1,5 +1,6 @@
 import VMCommands.Arithmetic.Add;
 import VMCommands.Command;
+import VMCommands.DoNothingCommand;
 import VMCommands.MemSegment;
 import VMCommands.MemoryCommands.Push;
 
@@ -26,11 +27,12 @@ public class Parser {
         cmd = removeComments(cmd);
         if (cmd.startsWith("push")) {
             String[] tmp = cmd.split(" ");
-            commands.add(new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
+            return new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
         }
         if (cmd.startsWith("add")) {
-            commands.add(new Add());
+            return new Add();
         }
+        return new DoNothingCommand();
     }
 
     private MemSegment translateMemSeg(String s) {
