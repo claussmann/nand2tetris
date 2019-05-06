@@ -21,7 +21,7 @@ public class gt extends ArithmeticCommand {
         asm.add("D=D;JGT");
         // sp<sp-1:
         asm.add("@SP");
-        asm.add("A=A-1");
+        asm.add("A=M-1");
         asm.add("M=0");
         asm.add("@continueGt"+x);
         asm.add("JMP");
@@ -29,7 +29,7 @@ public class gt extends ArithmeticCommand {
         //gt
         asm.add("(gt"+x+")");
         asm.add("@SP");
-        asm.add("A=A-1");
+        asm.add("A=M-1");
         asm.add("M=-1");
 
         asm.add("(continueGt"+x+")");

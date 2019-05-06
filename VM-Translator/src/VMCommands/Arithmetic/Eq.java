@@ -23,7 +23,7 @@ public class Eq extends ArithmeticCommand {
         asm.add("D=D;JEQ");
         //not equal:
         asm.add("@SP");
-        asm.add("A=A-1");
+        asm.add("A=M-1");
         asm.add("M=0");
         asm.add("@continueEq"+x);
         asm.add("JMP");
@@ -31,7 +31,7 @@ public class Eq extends ArithmeticCommand {
         //equal
         asm.add("(eq"+x+")");
         asm.add("@SP");
-        asm.add("A=A-1");
+        asm.add("A=M-1");
         asm.add("M=-1");
 
         asm.add("(continueEq"+x+")");
