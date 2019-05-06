@@ -24,6 +24,6 @@ public class VMTranslator {
         }
 
         Parser p = new Parser();
-        p.parse(file, new PrintStream(new FileOutputStream(inputfile+".hack")));
+        p.parse(file, new PrintStream(new FileOutputStream(filename+".asm")));
     }
 }
