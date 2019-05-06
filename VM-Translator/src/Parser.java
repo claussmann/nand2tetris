@@ -5,10 +5,15 @@ import VMCommands.MemSegment;
 import VMCommands.MemoryCommands.Push;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
     List<Command> commands;
+
+    public Parser(){
+        commands = new ArrayList<>();
+    }
 
     public void parse(List<String> vmCommands, PrintStream output) {
         for (String cmd : vmCommands) {
