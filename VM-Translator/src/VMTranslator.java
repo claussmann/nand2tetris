@@ -14,7 +14,7 @@ public class VMTranslator {
             System.exit(1);
         }
         String inputfile = args[0];
-        filename = inputfile.substring(inputfile.lastIndexOf("."));
+        filename = inputfile.substring(0, inputfile.lastIndexOf("."));
         List<String> file = null;
         try {
             file = FileInput.readAllLines(inputfile);
