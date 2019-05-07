@@ -3,7 +3,7 @@ package VMCommands.Arithmetic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class gt extends ArithmeticCommand {
+public class Gt extends ArithmeticCommand {
     static int x;
     @Override
     public List<String> toASMCommands() {
@@ -17,7 +17,7 @@ public class gt extends ArithmeticCommand {
         asm.add("A=M-1");
         asm.add("D=M-D");
 
-        asm.add("@gt"+x);
+        asm.add("@Gt"+x);
         asm.add("D=D;JGT");
         // sp<sp-1:
         asm.add("@SP");
@@ -26,8 +26,8 @@ public class gt extends ArithmeticCommand {
         asm.add("@continueGt"+x);
         asm.add("JMP");
 
-        //gt
-        asm.add("(gt"+x+")");
+        //Gt
+        asm.add("(Gt"+x+")");
         asm.add("@SP");
         asm.add("A=M-1");
         asm.add("M=-1");

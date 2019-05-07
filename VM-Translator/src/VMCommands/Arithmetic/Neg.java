@@ -3,7 +3,7 @@ package VMCommands.Arithmetic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class neg extends ArithmeticCommand {
+public class Neg extends ArithmeticCommand {
     @Override
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();

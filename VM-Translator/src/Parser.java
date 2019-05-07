@@ -45,14 +45,14 @@ public class Parser {
         if (cmd.startsWith("sub")) {
             return new Sub();
         }
-        if (cmd.startsWith("neg")) {
-            return new neg();
+        if (cmd.startsWith("Neg")) {
+            return new Neg();
         }
         if (cmd.startsWith("eq")) {
             return new Eq();
         }
         if (cmd.startsWith("gt")) {
-            return new gt();
+            return new Gt();
         }
         if (cmd.startsWith("lt")) {
             return new Lt();
