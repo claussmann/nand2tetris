@@ -49,23 +49,31 @@ public class Pop extends MemoryCommand {
                 asm.add("A=D");
                 break;
             case _that:
+                asm.add("@"+super.i);
+                asm.add("D=A");
                 asm.add("@THAT");
-                asm.add("A=A+" + super.i);
+                asm.add("A=A+D");
                 asm.add("M=D");
                 break;
             case _this:
+                asm.add("@"+super.i);
+                asm.add("D=A");
                 asm.add("@THIS");
-                asm.add("A=A+" + super.i);
+                asm.add("A=A+D");
                 asm.add("M=D");
                 break;
             case _local:
+                asm.add("@"+super.i);
+                asm.add("D=A");
                 asm.add("@LCL");
-                asm.add("A=A+" + super.i);
+                asm.add("A=A+D");
                 asm.add("M=D");
                 break;
             case _argument:
+                asm.add("@"+super.i);
+                asm.add("D=A");
                 asm.add("@ARG");
-                asm.add("A=A+" + super.i);
+                asm.add("A=A+D");
                 asm.add("M=D");
                 break;
         }
