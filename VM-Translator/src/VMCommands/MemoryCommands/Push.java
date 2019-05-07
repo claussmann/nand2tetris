@@ -51,28 +51,28 @@ public class Push extends MemoryCommand {
                 asm.add("@"+super.i);
                 asm.add("D=A");
                 asm.add("@THAT");
-                asm.add("A=A+D");
+                asm.add("A=M+D");
                 asm.add("D=M");
                 break;
             case _this:
                 asm.add("@"+super.i);
                 asm.add("D=A");
                 asm.add("@THIS");
-                asm.add("A=A+D");
+                asm.add("A=M+D");
                 asm.add("D=M");
                 break;
             case _local:
                 asm.add("@"+super.i);
                 asm.add("D=A");
                 asm.add("@LCL");
-                asm.add("A=A+D");
+                asm.add("A=M+D");
                 asm.add("D=M");
                 break;
             case _argument:
                 asm.add("@"+super.i);
                 asm.add("D=A");
                 asm.add("@ARG");
-                asm.add("A=A+D");
+                asm.add("A=M+D");
                 asm.add("D=M");
                 break;
         }
