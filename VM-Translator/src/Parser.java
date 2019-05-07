@@ -1,7 +1,8 @@
-import VMCommands.Arithmetic.Add;
+import VMCommands.Arithmetic.*;
 import VMCommands.Command;
 import VMCommands.DoNothingCommand;
 import VMCommands.MemSegment;
+import VMCommands.MemoryCommands.Pop;
 import VMCommands.MemoryCommands.Push;
 
 import java.io.PrintStream;
@@ -34,8 +35,36 @@ public class Parser {
             String[] tmp = cmd.split(" ");
             return new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
         }
+        if (cmd.startsWith("pop")) {
+            String[] tmp = cmd.split(" ");
+            return new Pop(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
+        }
         if (cmd.startsWith("add")) {
             return new Add();
+        }
+        if (cmd.startsWith("sub")) {
+            return new Sub();
+        }
+        if (cmd.startsWith("neg")) {
+            return new neg();
+        }
+        if (cmd.startsWith("eq")) {
+            return new Eq();
+        }
+        if (cmd.startsWith("gt")) {
+            return new gt();
+        }
+        if (cmd.startsWith("lt")) {
+            return new Lt();
+        }
+        if (cmd.startsWith("and")) {
+            return new And();
+        }
+        if (cmd.startsWith("or")) {
+            return new Or();
+        }
+        if (cmd.startsWith("not")) {
+            return new Not();
         }
         return new DoNothingCommand();
     }
