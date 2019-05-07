@@ -33,6 +33,7 @@ public class gt extends ArithmeticCommand {
         asm.add("M=-1");
 
         asm.add("(continueGt"+x+")");
+        x++;
         return asm;
     }
 }

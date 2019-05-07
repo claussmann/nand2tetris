@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Not extends ArithmeticCommand {
+    static int x;
     @Override
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
@@ -27,6 +28,7 @@ public class Not extends ArithmeticCommand {
         asm.add("M=-1");
 
         asm.add("(continueNot"+x+")");
+        x++;
         return asm;
     }
 }

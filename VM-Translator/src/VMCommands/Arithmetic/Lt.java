@@ -33,6 +33,7 @@ public class Lt extends ArithmeticCommand {
         asm.add("M=-1");
 
         asm.add("(continueLt"+x+")");
+        x++;
         return asm;
     }
 }

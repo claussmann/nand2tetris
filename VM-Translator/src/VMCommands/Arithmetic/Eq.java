@@ -35,6 +35,7 @@ public class Eq extends ArithmeticCommand {
         asm.add("M=-1");
 
         asm.add("(continueEq"+x+")");
+        x++;
         return asm;
     }
 }
