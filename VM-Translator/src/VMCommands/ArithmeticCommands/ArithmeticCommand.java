@@ -1,4 +1,4 @@
-package VMCommands.Arithmetic;
+package VMCommands.ArithmeticCommands;
 
 import VMCommands.Command;
 

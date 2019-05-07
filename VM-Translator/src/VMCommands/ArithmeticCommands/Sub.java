@@ -1,9 +1,9 @@
-package VMCommands.Arithmetic;
+package VMCommands.ArithmeticCommands;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Or extends ArithmeticCommand {
+public class Sub extends ArithmeticCommand {
     @Override
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
@@ -14,8 +14,7 @@ public class Or extends ArithmeticCommand {
 
         asm.add("@SP");
         asm.add("A=M-1");
-        asm.add("M=M|D");
-
+        asm.add("M=D-M");
         return asm;
     }
 }

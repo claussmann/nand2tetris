@@ -1,4 +1,4 @@
-import VMCommands.Arithmetic.*;
+import VMCommands.ArithmeticCommands.*;
 import VMCommands.Command;
 import VMCommands.DoNothingCommand;
 import VMCommands.MemSegment;

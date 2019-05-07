@@ -1,9 +1,9 @@
-package VMCommands.Arithmetic;
+package VMCommands.ArithmeticCommands;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Gt extends ArithmeticCommand {
+public class Lt extends ArithmeticCommand {
     static int x;
     @Override
     public List<String> toASMCommands() {
@@ -17,22 +17,22 @@ public class Gt extends ArithmeticCommand {
         asm.add("A=M-1");
         asm.add("D=M-D");
 
-        asm.add("@Gt"+x);
-        asm.add("D=D;JGT");
-        // sp<sp-1:
+        asm.add("@lt"+x);
+        asm.add("D=D;JLT");
+        // sp>sp-1:
         asm.add("@SP");
         asm.add("A=M-1");
         asm.add("M=0");
-        asm.add("@continueGt"+x);
+        asm.add("@continueLt"+x);
         asm.add("JMP");
 
-        //Gt
-        asm.add("(Gt"+x+")");
+        //lt
+        asm.add("(lt"+x+")");
         asm.add("@SP");
         asm.add("A=M-1");
         asm.add("M=-1");
 
-        asm.add("(continueGt"+x+")");
+        asm.add("(continueLt"+x+")");
         x++;
         return asm;
     }
