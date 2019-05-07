@@ -14,7 +14,7 @@ public class Sub extends ArithmeticCommand {
 
         asm.add("@SP");
         asm.add("A=M-1");
-        asm.add("M=D-M");
+        asm.add("M=M-D");
         return asm;
     }
 }
