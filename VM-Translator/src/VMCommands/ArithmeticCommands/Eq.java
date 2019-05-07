@@ -9,9 +9,9 @@ public class Eq extends ArithmeticCommand {
     @Override
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
+
         asm.add("@SP");
-        asm.add("M=M-1");
-        asm.add("A=M");
+        asm.add("AM=M-1");
         asm.add("D=M");
 
         asm.add("@SP");
