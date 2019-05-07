@@ -24,7 +24,7 @@ public class Lt extends ArithmeticCommand {
         asm.add("A=M-1");
         asm.add("M=0");
         asm.add("@continueLt"+x);
-        asm.add("JMP");
+        asm.add("0;JMP");
 
         //lt
         asm.add("(lt"+x+")");

@@ -26,7 +26,7 @@ public class Eq extends ArithmeticCommand {
         asm.add("A=M-1");
         asm.add("M=0");
         asm.add("@continueEq"+x);
-        asm.add("JMP");
+        asm.add("0;JMP");
 
         //equal
         asm.add("(eq"+x+")");

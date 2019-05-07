@@ -19,7 +19,7 @@ public class Not extends ArithmeticCommand {
         asm.add("A=M-1");
         asm.add("M=0");
         asm.add("@continueNot"+x);
-        asm.add("JMP");
+        asm.add("0;JMP");
 
         //sp-1 = false
         asm.add("(not"+x+")");

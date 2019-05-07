@@ -24,7 +24,7 @@ public class Gt extends ArithmeticCommand {
         asm.add("A=M-1");
         asm.add("M=0");
         asm.add("@continueGt"+x);
-        asm.add("JMP");
+        asm.add("0;JMP");
 
         //Gt
         asm.add("(Gt"+x+")");
