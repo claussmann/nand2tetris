@@ -34,6 +34,7 @@ public class Parser {
 
     private Command toCommand(String cmd) {
         cmd = removeComments(cmd);
+        cmd = cmd.trim();
         if (cmd.startsWith("push")) {
             String[] tmp = cmd.split(" ");
             return new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
