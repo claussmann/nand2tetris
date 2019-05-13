@@ -19,7 +19,7 @@ public class IfGoto extends BranchingCommand {
         asm.add("A=M");
         asm.add("D=M");
         asm.add("@"+super.labelname);
-        asm.add("D=D;JLT");
+        asm.add("D=D;JNE");
 
         return asm;
     }
