@@ -1,4 +1,7 @@
 import VMCommands.ArithmeticCommands.*;
+import VMCommands.BranchingCommands.Goto;
+import VMCommands.BranchingCommands.IfGoto;
+import VMCommands.BranchingCommands.Label;
 import VMCommands.Command;
 import VMCommands.DoNothingCommand;
 import VMCommands.MemSegment;
@@ -38,6 +41,18 @@ public class Parser {
         if (cmd.startsWith("pop")) {
             String[] tmp = cmd.split(" ");
             return new Pop(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
+        }
+        if (cmd.startsWith("if-goto")) {
+            String[] tmp = cmd.split(" ");
+            return new IfGoto(tmp[1]);
+        }
+        if (cmd.startsWith("goto")) {
+            String[] tmp = cmd.split(" ");
+            return new Goto(tmp[1]);
+        }
+        if (cmd.startsWith("label")) {
+            String[] tmp = cmd.split(" ");
+            return new Label(tmp[1]);
         }
         if (cmd.startsWith("add")) {
             return new Add();
