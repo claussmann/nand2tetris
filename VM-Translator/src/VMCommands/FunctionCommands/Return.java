@@ -9,7 +9,7 @@ public class Return extends FunctionCommand{
         List<String> asm = new ArrayList<>();
 
         //save return value to ARG[0]
-        asm.add("@LCL");
+        asm.add("@SP");
         asm.add("A=M");
         asm.add("D=M");
         asm.add("@ARG");
@@ -20,6 +20,12 @@ public class Return extends FunctionCommand{
         asm.add("@ARG");
         asm.add("D=M");
         asm.add("@5");
+        asm.add("M=D");
+
+        //pop local vars
+        asm.add("@LCL");
+        asm.add("D=M");
+        asm.add("@SP");
         asm.add("M=D");
 
         //reinstate the callers variables
