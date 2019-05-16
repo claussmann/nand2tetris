@@ -10,20 +10,23 @@ public class VMTranslator {
 
     public static void main(String[] args) throws FileNotFoundException {
         if(args.length == 0){
-            System.out.printf("No input file given");
+            System.out.printf("No input files given");
             System.exit(1);
         }
-        String inputfile = args[0];
-        filename = inputfile.substring(0, inputfile.lastIndexOf("."));
-        List<String> file = null;
-        try {
-            file = FileInput.readAllLines(inputfile);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+        for(int i=0; i<args.length; i++) {
+            String inputfile = args[i];
 
-        Parser p = new Parser();
-        p.parse(file, new PrintStream(new FileOutputStream(filename+".asm")));
+            filename = inputfile.substring(0, inputfile.lastIndexOf("."));
+            List<String> file = null;
+            try {
+                file = FileInput.readAllLines(inputfile);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.exit(-1);
+            }
+
+            Parser p = new Parser();
+            p.parse(file, new PrintStream(new FileOutputStream("out.asm")));
+        }
     }
 }
