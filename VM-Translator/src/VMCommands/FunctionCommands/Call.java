@@ -46,6 +46,12 @@ public class Call extends FunctionCommand {
         asm.add("@ARG");
         asm.add("M=D");
 
+        //LCL=SP
+        asm.add("@SP");
+        asm.add("D=M");
+        asm.add("@LCL");
+        asm.add("M=D");
+
         //jump to function
         asm.add("@"+function);
         asm.add("0;JMP");
