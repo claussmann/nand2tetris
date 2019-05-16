@@ -8,20 +8,13 @@ public class Return extends FunctionCommand{
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
 
-        //save return value in args[0]
+        //save return value in R5
         asm.add("@SP");
         asm.add("A=M-1");
         asm.add("D=M");
-        asm.add("@ARG");
-        asm.add("A=M");
-        asm.add("M=D");
-
-        //save new SP-Value after return to R5
-        //This is needed to pop function args.
-        asm.add("@ARG");
-        asm.add("D=M");
         asm.add("@R5");
         asm.add("M=D");
+
 
         //pop local vars
         asm.add("@LCL");
@@ -51,11 +44,14 @@ public class Return extends FunctionCommand{
         asm.add("@R6");
         asm.add("M=D");
 
-        //restore SP
+        //push the return value to stack again
         asm.add("@R5");
-        asm.add("D=M+1");
+        asm.add("D=M");
         asm.add("@SP");
+        asm.add("A=M");
         asm.add("M=D");
+        asm.add("@SP");
+        asm.add("M=M+1");
 
 
         //return
