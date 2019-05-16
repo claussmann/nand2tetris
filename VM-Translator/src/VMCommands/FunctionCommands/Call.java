@@ -48,11 +48,12 @@ public class Call extends FunctionCommand {
 
         //jump to function
         asm.add("@"+function);
-        asm.add("=;JMP");
+        asm.add("0;JMP");
 
         //return here:
         asm.add("(ret."+i+")");
 
+        i++;
         return asm;
     }
 
