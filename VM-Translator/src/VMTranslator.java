@@ -13,6 +13,9 @@ public class VMTranslator {
             System.out.printf("No input files given");
             System.exit(1);
         }
+
+        Parser p = new Parser();
+
         for(int i=0; i<args.length; i++) {
             String inputfile = args[i];
 
@@ -24,9 +27,8 @@ public class VMTranslator {
                 e.printStackTrace();
                 System.exit(-1);
             }
-
-            Parser p = new Parser();
-            p.parse(file, new PrintStream(new FileOutputStream("out.asm")));
+            p.parse(file);
         }
+        p.write(new PrintStream(new FileOutputStream("out.asm")));
     }
 }

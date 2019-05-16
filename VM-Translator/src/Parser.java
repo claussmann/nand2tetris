@@ -22,15 +22,17 @@ public class Parser {
         commands = new ArrayList<>();
     }
 
-    public void parse(List<String> vmCommands, PrintStream output) {
+    public void parse(List<String> vmCommands) {
         for (String cmd : vmCommands) {
             commands.add(toCommand(cmd));
         }
+    }
 
+    public void write(PrintStream out){
         //print all commands in asm-translation to the output
         for (Command cmd : commands) {
             for (String asm : cmd.toASMCommands()) {
-                output.println(asm);
+                out.println(asm);
             }
         }
     }
