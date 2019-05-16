@@ -4,6 +4,9 @@ import VMCommands.BranchingCommands.IfGoto;
 import VMCommands.BranchingCommands.Label;
 import VMCommands.Command;
 import VMCommands.DoNothingCommand;
+import VMCommands.FunctionCommands.Call;
+import VMCommands.FunctionCommands.Function;
+import VMCommands.FunctionCommands.Return;
 import VMCommands.MemSegment;
 import VMCommands.MemoryCommands.Pop;
 import VMCommands.MemoryCommands.Push;
@@ -35,6 +38,17 @@ public class Parser {
     private Command toCommand(String cmd) {
         cmd = removeComments(cmd);
         cmd = cmd.trim();
+        if (cmd.startsWith("function")) {
+            String[] tmp = cmd.split(" ");
+            return new Function(tmp[1],Integer.parseInt(tmp[2]));
+        }
+        if (cmd.startsWith("call")) {
+            String[] tmp = cmd.split(" ");
+            return new Call(tmp[1],Integer.parseInt(tmp[2]));
+        }
+        if (cmd.startsWith("return")) {
+            return new Return();
+        }
         if (cmd.startsWith("push")) {
             String[] tmp = cmd.split(" ");
             return new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
