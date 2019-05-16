@@ -8,18 +8,19 @@ public class Return extends FunctionCommand{
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
 
-        //save return value to ARG[0]
+        //save return value in args[0]
         asm.add("@SP");
-        asm.add("A=M");
+        asm.add("A=M-1");
         asm.add("D=M");
         asm.add("@ARG");
         asm.add("A=M");
         asm.add("M=D");
 
         //save new SP-Value after return to R5
+        //This is needed to pop function args.
         asm.add("@ARG");
         asm.add("D=M");
-        asm.add("@5");
+        asm.add("@R5");
         asm.add("M=D");
 
         //pop local vars
@@ -47,18 +48,18 @@ public class Return extends FunctionCommand{
 
         //save return-address to R6
         asm.addAll(popD());
-        asm.add("@6");
+        asm.add("@R6");
         asm.add("M=D");
 
         //restore SP
-        asm.add("@5");
+        asm.add("@R5");
         asm.add("D=M+1");
         asm.add("@SP");
         asm.add("M=D");
 
-        //now: sp is on the *(return value)+1
 
-        asm.add("@6");
+        //return
+        asm.add("@R6");
         asm.add("A=M");
         asm.add("0;JMP");
 
@@ -69,7 +70,7 @@ public class Return extends FunctionCommand{
         List<String> asm = new ArrayList<>();
 
         asm.add("@SP");
-        asm.add("A=M");
+        asm.add("A=M-1");
         asm.add("D=M");
         asm.add("@SP");
         asm.add("M=M-1");
