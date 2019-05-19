@@ -16,11 +16,11 @@ public class Return extends FunctionCommand{
         asm.add("A=M");
         asm.add("M=D");
 
-        //save arg[0]+1 in R5
+        //save arg[0]+1 in R10
         asm.add("@ARG");
         asm.add("A=M+1");
         asm.add("D=M");
-        asm.add("@R5");
+        asm.add("@R10");
         asm.add("M=D");
 
 
@@ -47,20 +47,20 @@ public class Return extends FunctionCommand{
         asm.add("@LCL");
         asm.add("M=D");
 
-        //save return-address to R6
+        //save return-address to R11
         asm.addAll(popD());
-        asm.add("@R6");
+        asm.add("@R11");
         asm.add("M=D");
 
         //set SP to *(return value)+1
-        asm.add("@R5");
+        asm.add("@R10");
         asm.add("D=M");
         asm.add("@SP");
         asm.add("M=D");
 
 
         //return
-        asm.add("@R6");
+        asm.add("@R11");
         asm.add("A=M");
         asm.add("0;JMP");
 
