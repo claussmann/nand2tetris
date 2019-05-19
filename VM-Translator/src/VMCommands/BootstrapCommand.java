@@ -8,7 +8,7 @@ public class BootstrapCommand extends Command {
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
 
-        //SP=256
+        //SP=261
         asm.add("@261");
         asm.add("D=A");
         asm.add("@SP");
