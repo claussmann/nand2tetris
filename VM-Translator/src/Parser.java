@@ -1,4 +1,5 @@
 import VMCommands.ArithmeticCommands.*;
+import VMCommands.BootstrapCommand;
 import VMCommands.BranchingCommands.Goto;
 import VMCommands.BranchingCommands.IfGoto;
 import VMCommands.BranchingCommands.Label;
@@ -25,7 +26,7 @@ public class Parser {
     }
 
     private void writeSysInit() {
-        commands.add(new Goto("Sys.init"));
+        commands.add(new BootstrapCommand());
     }
 
     public void parse(List<String> vmCommands, String classname) {
