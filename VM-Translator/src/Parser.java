@@ -21,6 +21,11 @@ public class Parser {
 
     public Parser(){
         commands = new ArrayList<>();
+        writeSysInit();
+    }
+
+    private void writeSysInit() {
+        commands.add(new Goto("Sys.init"));
     }
 
     public void parse(List<String> vmCommands, String classname) {
