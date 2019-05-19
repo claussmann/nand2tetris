@@ -19,7 +19,7 @@ public class Return extends FunctionCommand{
         //save arg[0]+1 in R10
         asm.add("@ARG");
         asm.add("A=M+1");
-        asm.add("D=M");
+        asm.add("D=A");
         asm.add("@R10");
         asm.add("M=D");
 
