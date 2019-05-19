@@ -8,9 +8,17 @@ public class Return extends FunctionCommand{
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
 
-        //save return value in R5
+        //save return value in arg[0]
         asm.add("@SP");
         asm.add("A=M-1");
+        asm.add("D=M");
+        asm.add("@ARG");
+        asm.add("A=M");
+        asm.add("M=D");
+
+        //save arg[0]+1 in R5
+        asm.add("@ARG");
+        asm.add("A=M+1");
         asm.add("D=M");
         asm.add("@R5");
         asm.add("M=D");
@@ -44,14 +52,11 @@ public class Return extends FunctionCommand{
         asm.add("@R6");
         asm.add("M=D");
 
-        //push the return value to stack again
+        //set SP to *(return value)+1
         asm.add("@R5");
         asm.add("D=M");
         asm.add("@SP");
-        asm.add("A=M");
         asm.add("M=D");
-        asm.add("@SP");
-        asm.add("M=M+1");
 
 
         //return
