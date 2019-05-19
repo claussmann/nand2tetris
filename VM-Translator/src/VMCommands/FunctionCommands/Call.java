@@ -6,7 +6,7 @@ import java.util.List;
 public class Call extends FunctionCommand {
     static int i;
     private final String function;
-    private final int argc;
+    private int argc;
 
     public Call(String function, int argc) {
         this.function = function;
@@ -20,6 +20,7 @@ public class Call extends FunctionCommand {
             //make room for the return value
             asm.add("@SP");
             asm.add("M=M+1");
+            argc++;
         }
 
         //save return address on stack
