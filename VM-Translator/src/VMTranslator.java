@@ -11,6 +11,7 @@ public class VMTranslator {
     public static void main(String[] args) throws FileNotFoundException {
         if(args.length == 0){
             System.out.printf("No input files given");
+            System.out.printf("Usage: java VMTranslator <inputfile1> <inputfile2> <...>");
             System.exit(1);
         }
 
