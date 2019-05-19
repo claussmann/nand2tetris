@@ -49,7 +49,7 @@ public class Parser {
         cmd = cmd.trim();
         if (cmd.startsWith("function")) {
             String[] tmp = cmd.split(" ");
-            return new Function(tmp[1],currentClassname,Integer.parseInt(tmp[2]));
+            return new Function(tmp[1],Integer.parseInt(tmp[2]));
         }
         if (cmd.startsWith("call")) {
             String[] tmp = cmd.split(" ");
