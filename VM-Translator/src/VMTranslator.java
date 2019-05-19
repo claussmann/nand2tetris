@@ -6,8 +6,6 @@ import java.util.List;
 
 public class VMTranslator {
 
-    public static String filename;
-
     public static void main(String[] args) throws FileNotFoundException {
         if(args.length == 0){
             System.out.printf("No input files given");
@@ -19,8 +17,7 @@ public class VMTranslator {
 
         for(int i=0; i<args.length; i++) {
             String inputfile = args[i];
-
-            filename = inputfile.substring(0, inputfile.lastIndexOf("."));
+            String classname = inputfile.substring(0, inputfile.lastIndexOf("."));
             List<String> file = null;
             try {
                 file = FileInput.readAllLines(inputfile);
@@ -28,7 +25,7 @@ public class VMTranslator {
                 e.printStackTrace();
                 System.exit(-1);
             }
-            p.parse(file);
+            p.parse(file, classname);
         }
         p.write(new PrintStream(new FileOutputStream("out.asm")));
     }

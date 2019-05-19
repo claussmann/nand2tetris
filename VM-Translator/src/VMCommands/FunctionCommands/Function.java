@@ -5,10 +5,12 @@ import java.util.List;
 
 public class Function extends FunctionCommand {
     private final String name;
+    private String classname;
     private final int varc;
 
-    public Function(String name, int varc){
+    public Function(String name, String classname, int varc){
         this.name = name;
+        this.classname = classname;
         this.varc = varc;
     }
 
@@ -16,7 +18,7 @@ public class Function extends FunctionCommand {
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
 
-        asm.add("("+name+")");
+        asm.add("("+classname+"."+name+")");
 
         for (int i = 0; i < varc; i++) {
             asm.add("@SP");

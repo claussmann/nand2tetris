@@ -17,12 +17,14 @@ import java.util.List;
 
 public class Parser {
     List<Command> commands;
+    String currentClassname;
 
     public Parser(){
         commands = new ArrayList<>();
     }
 
-    public void parse(List<String> vmCommands) {
+    public void parse(List<String> vmCommands, String classname) {
+        currentClassname=classname;
         for (String cmd : vmCommands) {
             commands.add(toCommand(cmd));
         }
@@ -42,7 +44,7 @@ public class Parser {
         cmd = cmd.trim();
         if (cmd.startsWith("function")) {
             String[] tmp = cmd.split(" ");
-            return new Function(tmp[1],Integer.parseInt(tmp[2]));
+            return new Function(tmp[1],currentClassname,Integer.parseInt(tmp[2]));
         }
         if (cmd.startsWith("call")) {
             String[] tmp = cmd.split(" ");
@@ -53,11 +55,11 @@ public class Parser {
         }
         if (cmd.startsWith("push")) {
             String[] tmp = cmd.split(" ");
-            return new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
+            return new Push(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), currentClassname);
         }
         if (cmd.startsWith("pop")) {
             String[] tmp = cmd.split(" ");
-            return new Pop(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), VMTranslator.filename);
+            return new Pop(translateMemSeg(tmp[1]), Integer.parseInt(tmp[2]), currentClassname);
         }
         if (cmd.startsWith("if-goto")) {
             String[] tmp = cmd.split(" ");
