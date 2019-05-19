@@ -9,10 +9,10 @@ public class BootstrapCommand extends Command {
         List<String> asm = new ArrayList<>();
 
         //SP=256
-        asm.add("@256");
+        /*asm.add("@256");
         asm.add("D=A");
         asm.add("@SP");
-        asm.add("M=D");
+        asm.add("M=D");*/
 
         //call sys.init
         asm.add("@Sys.init");
