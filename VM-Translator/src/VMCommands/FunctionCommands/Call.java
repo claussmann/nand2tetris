@@ -15,6 +15,10 @@ public class Call extends FunctionCommand {
     @Override
     public List<String> toASMCommands() {
         List<String> asm = new ArrayList<>();
+        //make room for the return value
+        asm.add("@SP");
+        asm.add("M=M+1");
+
         //save return address on stack
         asm.add("@ret."+i);
         asm.add("D=A");
@@ -38,7 +42,7 @@ public class Call extends FunctionCommand {
         asm.addAll(pushD());
 
         //put the arg-pointer to the correct position
-        int stackOffset = (5+argc);
+        int stackOffset = (6+argc);
         asm.add("@"+stackOffset);
         asm.add("D=A");
         asm.add("@SP");
