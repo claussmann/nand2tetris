@@ -1,5 +1,8 @@
+import Token.Token;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class JackCompiler {
@@ -17,6 +20,12 @@ public class JackCompiler {
             allLines.addAll(FileInput.readAllLines(file));
         }
 
+        Tokenizer tokenizer=new Tokenizer();
+        List<Token> tokens = tokenizer.tokenize(allLines);
+
+        for (Token token:tokens){
+            System.out.println(token.toXML());
+        }
 
     }
 }
