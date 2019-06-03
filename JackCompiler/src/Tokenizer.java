@@ -16,9 +16,7 @@ public class Tokenizer {
     public List<Token> tokenize(List<String> rawInput){
         ArrayList<Token> tokens = new ArrayList<>();
         for(String line : rawInput){
-            String pattern = "(\\{|}|while|if|else|class|constructor|\\(|\\)|" +
-                    "method|field|static|var|int|char|boolean|void|true|false" +
-                    "|null|this|let|do|return|\\[|]|\\.|,|;|\\+|-|\\*|/|<|>|=|~|[0-9]|[a-zA-Z]+|\\\"(.*?)\\\")";
+            String pattern = "("+keywords+"|"+symbols+"|"+identifier+"|"+intConst+"|"+stringConst+")";
 
             Pattern p= Pattern.compile(pattern);
             Matcher matcher = p.matcher(line.trim());
