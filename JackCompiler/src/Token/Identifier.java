@@ -11,6 +11,6 @@ public class Identifier extends Token {
 
     @Override
     public String toXML() {
-        return "<Identifier>"+token+"</Identifier>";
+        return "<identifier>"+token+"</identifier>";
     }
 }

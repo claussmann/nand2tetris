@@ -10,6 +10,6 @@ public class IntegerConstant extends Token {
 
     @Override
     public String toXML() {
-        return "<IntegerConstant>"+token+"</IntegerConstant>";
+        return "<integerConstant>"+token+"</integerConstant>";
     }
 }

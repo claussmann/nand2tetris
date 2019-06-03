@@ -10,6 +10,6 @@ public class StringConstant extends Token {
 
     @Override
     public String toXML() {
-        return "<StringConstant>"+token+"</StringConstant>";
+        return "<stringConst>"+token+"</stringConst>";
     }
 }

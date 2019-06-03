@@ -10,6 +10,6 @@ public class KeyWord extends Token {
 
     @Override
     public String toXML() {
-        return "<KeyWord>"+token+"</KeyWord>";
+        return "<keyword>"+token+"</keyword>";
     }
 }

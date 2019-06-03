@@ -10,6 +10,6 @@ public class Symbol extends Token {
 
     @Override
     public String toXML() {
-        return "<Symbol>"+symbol+"</Symbol>";
+        return "<symbol>"+symbol+"</symbol>";
     }
 }
