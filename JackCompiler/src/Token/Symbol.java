@@ -14,6 +14,6 @@ public class Symbol extends Token {
     }
 
     public String getToken(){
-        return token;
+        return symbol;
     }
 }
