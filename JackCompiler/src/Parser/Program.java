@@ -26,7 +26,9 @@ public class Program {
         className = (Identifier) tokens.remove();
         open = (Symbol) tokens.remove();
         classVars = new ArrayList<>();
-        while (! tokens.peek().getToken().equals("constructor")){
+        while (! (tokens.peek().getToken().equals("constructor")
+                ||tokens.peek().getToken().equals("function")
+                ||tokens.peek().getToken().equals("method"))){
             classVars.add(new ClassVarDeclaration(tokens));
         }
         routines = new ArrayList<>();

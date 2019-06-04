@@ -1,7 +1,9 @@
 import Token.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,8 +15,8 @@ public class Tokenizer {
     String stringConst = "\\\"(.*?)\\\"";
     String identifier = "[a-zA-Z]+";
 
-    public List<Token> tokenize(List<String> rawInput){
-        ArrayList<Token> tokens = new ArrayList<>();
+    public Queue<Token> tokenize(List<String> rawInput){
+        Queue<Token> tokens = new LinkedList<Token>();
         for(String line : rawInput){
             String pattern = "("+keywords+"|"+symbols+"|"+identifier+"|"+intConst+"|"+stringConst+")";
 

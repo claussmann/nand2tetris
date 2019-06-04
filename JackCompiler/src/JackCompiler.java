@@ -2,7 +2,8 @@ import Token.Token;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Queue;
+import Parser.*;
 
 
 public class JackCompiler {
@@ -21,11 +22,13 @@ public class JackCompiler {
         }
 
         Tokenizer tokenizer=new Tokenizer();
-        List<Token> tokens = tokenizer.tokenize(allLines);
+        Queue<Token> tokens = tokenizer.tokenize(allLines);
 
         for (Token token:tokens){
             System.out.println(token.toXML());
         }
 
+        Program program = new Program(tokens);
+        program.parse();
     }
 }
