@@ -2,32 +2,33 @@ package Parser;
 
 import Token.KeyWord;
 import Token.Symbol;
+import Token.Token;
+
+import java.util.Queue;
 
 public class WhileStatement extends Statement {
 
     private final KeyWord keywordWhile;
     private final Symbol symbolOpen;
-    private final Parser.Expression expression;
+    private final Expression expression;
     private final Symbol symbolClose;
     private final Symbol bodyOpen;
-    private final Parser.Statements statements;
+    private final Statements statements;
     private final Symbol bodyClose;
 
-    public WhileStatement(KeyWord keywordWhile, Symbol symbolOpen, Expression expression, Symbol symbolClose,
-                          Symbol bodyOpen, Statements statements, Symbol bodyClose){
 
-        this.keywordWhile = keywordWhile;
-        this.symbolOpen = symbolOpen;
-        this.expression = expression;
-        this.symbolClose = symbolClose;
-        this.bodyOpen = bodyOpen;
-        this.statements = statements;
-        this.bodyClose = bodyClose;
+    public WhileStatement(Queue<Token> tokens) {
 
-        if(!validate()){
-            System.out.println("Incorrect While Statement");
-            System.exit(-1);
+        keywordWhile = (KeyWord)tokens.remove();
+        symbolOpen = (Symbol)tokens.remove();
+        expression = new Expression(tokens);
+        symbolClose = (Symbol)tokens.remove();
+        bodyOpen = (Symbol)tokens.remove();
+        statements = new Statements();
+        while (isStatementBeginning(tokens.peek())){
+            getStatement(tokens);
         }
+        bodyClose = (Symbol)tokens.remove();
     }
 
 
@@ -40,5 +41,6 @@ public class WhileStatement extends Statement {
                 && bodyClose.getToken().equals("}")
                 && statements.validate();
     }
+
 
 }

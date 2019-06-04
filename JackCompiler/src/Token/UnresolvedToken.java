@@ -5,4 +5,9 @@ public class UnresolvedToken extends Token {
     public String toXML() {
         return "";
     }
+
+    @Override
+    public String getToken() {
+        return null;
+    }
 }
