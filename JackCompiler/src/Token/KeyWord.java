@@ -12,4 +12,8 @@ public class KeyWord extends Token {
     public String toXML() {
         return "<keyword>"+token+"</keyword>";
     }
+
+    public String getToken(){
+        return token;
+    }
 }

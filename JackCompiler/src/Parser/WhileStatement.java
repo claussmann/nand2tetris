@@ -23,5 +23,22 @@ public class WhileStatement extends Statement {
         this.bodyOpen = bodyOpen;
         this.statements = statements;
         this.bodyClose = bodyClose;
+
+        if(!validate()){
+            System.out.println("Incorrect While Statement");
+            System.exit(-1);
+        }
     }
+
+
+    boolean validate() {
+        return keywordWhile.getToken().equals("if")
+                && symbolOpen.getToken().equals("(")
+                && symbolClose.getToken().equals(")")
+                && expression.validate()
+                && bodyOpen.getToken().equals("{")
+                && bodyClose.getToken().equals("}")
+                && statements.validate();
+    }
+
 }

@@ -4,9 +4,9 @@ import Token.Symbol;
 
 public class Expression {
 
-    private final Parser.Term term;
+    private final Term term;
     private Symbol op;
-    private Parser.Term term2;
+    private Term term2;
 
     public Expression(Term term){
 
@@ -18,5 +18,9 @@ public class Expression {
         this.term = term;
         this.op = op;
         this.term2 = term2;
+    }
+
+    boolean validate() {
+        return op.equals("+") || op.equals("-") || op.equals("=") || op.equals("<") || op.equals(">");
     }
 }

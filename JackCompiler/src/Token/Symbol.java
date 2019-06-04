@@ -12,4 +12,8 @@ public class Symbol extends Token {
     public String toXML() {
         return "<symbol>"+symbol+"</symbol>";
     }
+
+    public String getToken(){
+        return token;
+    }
 }

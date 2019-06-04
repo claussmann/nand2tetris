@@ -14,4 +14,8 @@ public class StringConstant extends Token implements Term {
     public String toXML() {
         return "<stringConst>"+token+"</stringConst>";
     }
+
+    public String getToken(){
+        return token;
+    }
 }

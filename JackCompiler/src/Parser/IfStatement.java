@@ -23,5 +23,20 @@ public class IfStatement extends Statement {
         this.bodyOpen = bodyOpen;
         this.statements = statements;
         this.bodyClose = bodyClose;
+
+        if(!validate()){
+            System.out.println("Incorrect If Statement");
+            System.exit(-1);
+        }
+    }
+
+    boolean validate() {
+        return keywordIf.getToken().equals("if")
+                && symbolOpen.getToken().equals("(")
+                && symbolClose.getToken().equals(")")
+                && expression.validate()
+                && bodyOpen.getToken().equals("{")
+                && bodyClose.getToken().equals("}")
+                && statements.validate();
     }
 }

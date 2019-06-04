@@ -14,4 +14,8 @@ public class IntegerConstant extends Token implements Term {
     public String toXML() {
         return "<integerConstant>"+token+"</integerConstant>";
     }
+
+    public String getToken(){
+        return token;
+    }
 }

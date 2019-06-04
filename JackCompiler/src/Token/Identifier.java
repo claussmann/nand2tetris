@@ -15,4 +15,8 @@ public class Identifier extends Token implements Term {
     public String toXML() {
         return "<identifier>"+token+"</identifier>";
     }
+
+    public String getToken(){
+        return token;
+    }
 }
