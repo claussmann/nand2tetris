@@ -1,6 +1,8 @@
 package Token;
 
-public class StringConstant extends Token {
+import Parser.Term;
+
+public class StringConstant extends Token implements Term {
     private String token;
 
     public StringConstant(String token) {

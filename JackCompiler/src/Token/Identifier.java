@@ -1,6 +1,8 @@
 package Token;
 
-public class Identifier extends Token {
+import Parser.Term;
+
+public class Identifier extends Token implements Term {
 
     private String token;
 
