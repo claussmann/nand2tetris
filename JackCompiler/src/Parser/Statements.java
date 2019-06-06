@@ -1,5 +1,6 @@
 package Parser;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class Statements {
@@ -19,5 +20,13 @@ public class Statements {
             }
         }
         return true;
+    }
+
+    public void toXML(PrintStream printStream) {
+        printStream.println("<statements>");
+        for(Statement s : list){
+            s.toXML(printStream);
+        }
+        printStream.println("</statements>");
     }
 }

@@ -2,6 +2,7 @@ package Parser;
 
 import Token.*;
 
+import java.io.PrintStream;
 import java.util.Queue;
 
 public class LetStatement extends Statement {
@@ -25,5 +26,16 @@ public class LetStatement extends Statement {
                 && equals.getToken().equals("=")
                 && expression.validate()
                 && semicolon.getToken().equals(";");
+    }
+
+    @Override
+    public void toXML(PrintStream printStream) {
+        printStream.println("<letStatement>");
+        printStream.println(let.toXML());
+        printStream.println(variable.toXML());
+        printStream.println(equals.toXML());
+        expression.toXML(printStream);
+        printStream.println(semicolon.toXML());
+        printStream.println("</letStatement>");
     }
 }

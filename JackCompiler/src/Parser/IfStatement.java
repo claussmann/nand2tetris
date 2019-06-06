@@ -4,6 +4,7 @@ import Token.KeyWord;
 import Token.Symbol;
 import Token.Token;
 
+import java.io.PrintStream;
 import java.util.Queue;
 
 public class IfStatement extends Statement {
@@ -39,5 +40,18 @@ public class IfStatement extends Statement {
                 && bodyOpen.getToken().equals("{")
                 && bodyClose.getToken().equals("}")
                 && statements.validate();
+    }
+
+    @Override
+    public void toXML(PrintStream printStream) {
+        printStream.println("<ifStatement>");
+        printStream.println(keywordIf.toXML());
+        printStream.println(symbolOpen.toXML());
+        expression.toXML(printStream);
+        printStream.println(symbolClose.toXML());
+        printStream.println(bodyOpen.toXML());
+        statements.toXML(printStream);
+        printStream.println(bodyClose.toXML());
+        printStream.println("</ifStatement>");
     }
 }

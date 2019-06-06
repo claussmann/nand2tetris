@@ -2,6 +2,7 @@ package Parser;
 
 import Token.*;
 
+import java.io.PrintStream;
 import java.util.Queue;
 
 public class Parameter {
@@ -10,5 +11,8 @@ public class Parameter {
         //TODO
         tokens.remove();
         tokens.remove();
+    }
+
+    public void toXML(PrintStream printStream) {
     }
 }

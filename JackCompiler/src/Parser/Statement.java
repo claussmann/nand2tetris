@@ -2,9 +2,10 @@ package Parser;
 
 import Token.Token;
 
+import java.io.PrintStream;
 import java.util.Queue;
 
-public class Statement {
+public abstract class Statement {
     boolean validate() {
         return true;
     }
@@ -31,4 +32,6 @@ public class Statement {
         }
         return null;
     }
+
+    public abstract void toXML(PrintStream printStream) ;
 }

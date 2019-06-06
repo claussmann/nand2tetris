@@ -2,6 +2,7 @@ package Parser;
 
 import Token.*;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -36,5 +37,23 @@ public class Program {
             routines.add(new SubroutineDeclaration(tokens));
         }
         close = (Symbol) tokens.remove();
+    }
+
+    public void toXML(PrintStream printStream) {
+        printStream.println("<class>");
+        printStream.println(classKeyword.toXML());
+        printStream.println(className.toXML());
+        printStream.println(open.toXML());
+
+        for(ClassVarDeclaration declaration:classVars) {
+            declaration.toXML(printStream);
+        }
+
+        for(SubroutineDeclaration declaration : routines) {
+            declaration.toXML(printStream);
+        }
+
+        printStream.println(close.toXML());
+        printStream.println("</class>");
     }
 }

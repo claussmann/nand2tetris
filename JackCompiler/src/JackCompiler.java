@@ -1,6 +1,8 @@
 import Token.Token;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Queue;
 import Parser.*;
@@ -24,11 +26,15 @@ public class JackCompiler {
         Tokenizer tokenizer=new Tokenizer();
         Queue<Token> tokens = tokenizer.tokenize(allLines);
 
+
+        PrintStream printStream = new PrintStream(new FileOutputStream(args[0] + "T.xml"));
         for (Token token:tokens){
-            System.out.println(token.toXML());
+            printStream.println(token.toXML());
         }
 
         Program program = new Program(tokens);
         program.parse();
+        PrintStream printStream2 = new PrintStream(new FileOutputStream(args[0] + ".xml"));
+        program.toXML(printStream2);
     }
 }

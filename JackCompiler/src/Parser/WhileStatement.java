@@ -4,6 +4,7 @@ import Token.KeyWord;
 import Token.Symbol;
 import Token.Token;
 
+import java.io.PrintStream;
 import java.util.Queue;
 
 public class WhileStatement extends Statement {
@@ -40,6 +41,19 @@ public class WhileStatement extends Statement {
                 && bodyOpen.getToken().equals("{")
                 && bodyClose.getToken().equals("}")
                 && statements.validate();
+    }
+
+    @Override
+    public void toXML(PrintStream printStream) {
+        printStream.println("<whileStatement>");
+        printStream.println(keywordWhile.toXML());
+        printStream.println(symbolOpen.toXML());
+        expression.toXML(printStream);
+        printStream.println(symbolClose.toXML());
+        printStream.println(bodyOpen.toXML());
+        statements.toXML(printStream);
+        printStream.println(bodyClose.toXML());
+        printStream.println("</whileStatement>");
     }
 
 

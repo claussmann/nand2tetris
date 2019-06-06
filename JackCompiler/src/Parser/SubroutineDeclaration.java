@@ -2,6 +2,7 @@ package Parser;
 
 import Token.*;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
@@ -71,5 +72,25 @@ public class SubroutineDeclaration {
                 ||token.getToken().equals("while")
                 ||token.getToken().equals("do")
                 ||token.getToken().equals("return");
+    }
+
+    public void toXML(PrintStream printStream) {
+        printStream.println("<subroutineDec>");
+        printStream.println(methodType.toXML());
+        printStream.println(returnType.toXML());
+        printStream.println(routineName.toXML());
+        printStream.println(openParam.toXML());
+        printStream.println("<parameterList>");
+        for(Parameter p : parameterList){
+            p.toXML(printStream);
+        }
+        printStream.println("</parameterList>");
+        printStream.println(closeParam.toXML());
+        printStream.println("<subroutineBody>");
+        printStream.println(open.toXML());
+        statements.toXML(printStream);
+        printStream.println(close.toXML());
+        printStream.println("</subroutineBody>");
+        printStream.println("</subroutineDec>");
     }
 }
