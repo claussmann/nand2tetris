@@ -10,6 +10,7 @@ public class ReturnStatement extends Statement {
         //TODO:
         tokens.remove();
         tokens.remove();
+        tokens.remove();
     }
 
     @Override

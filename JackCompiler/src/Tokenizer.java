@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class Tokenizer {
 
-    String keywords = "(while|if|else|class|constructor|method|field|static|var|int|char|boolean|void|true|false|null|this|let|do|return)";
+    String keywords = "(while|if|else|class|constructor|method|function|field|static|var|int|char|boolean|void|true|false|null|this|let|do|return)";
     String symbols = "(\\{|}|\\(|\\)|\\[|]|\\.|,|;|\\+|-|\\*|/|<|>|=|~)";
     String intConst = "[0-9]";
     String stringConst = "\\\"(.*?)\\\"";

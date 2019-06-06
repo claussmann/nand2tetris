@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class SubroutineDeclaration {
 
-    Identifier methodType;
+    KeyWord methodType;
     KeyWord returnType;
     Identifier routineName;
     Symbol openParam;
@@ -28,7 +28,7 @@ public class SubroutineDeclaration {
 
     private void parse(Queue<Token> tokens) {
 
-        methodType = (Identifier)tokens.remove();
+        methodType = (KeyWord)tokens.remove();
         returnType = (KeyWord)tokens.remove();
         routineName = (Identifier)tokens.remove();
         openParam = (Symbol)tokens.remove();
@@ -46,7 +46,6 @@ public class SubroutineDeclaration {
         while (isStatementBeginning(tokens.peek())){
             statements.add(getStatement(tokens));
         }
-        System.out.println(tokens.peek().getToken());
         close = (Symbol)tokens.remove();
     }
 
