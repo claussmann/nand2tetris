@@ -22,7 +22,6 @@ public class Term {
         Token t = tokens.remove();
         if(t.getToken().equals("~")){
             invert=(Symbol)t;
-            System.out.println(tokens.peek().toXML());
             t=tokens.remove();
         }
         if(t.getToken().equals("(")){

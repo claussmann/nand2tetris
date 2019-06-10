@@ -40,7 +40,7 @@ public class SubroutineDeclaration {
         open = (Symbol)tokens.remove();
         vars = new ArrayList<>();
         while (! isStatementBeginning(tokens.peek())){
-            vars.add(new VarDeclaration());
+            vars.add(new VarDeclaration(tokens));
         }
         statements = new Statements();
         while (isStatementBeginning(tokens.peek())){
@@ -87,6 +87,9 @@ public class SubroutineDeclaration {
         printStream.println(closeParam.toXML());
         printStream.println("<subroutineBody>");
         printStream.println(open.toXML());
+        for(VarDeclaration v : vars){
+            v.toXML(printStream);
+        }
         statements.toXML(printStream);
         printStream.println(close.toXML());
         printStream.println("</subroutineBody>");
