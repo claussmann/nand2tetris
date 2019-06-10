@@ -43,21 +43,21 @@ public class JackCompiler {
             System.err.println("Failed to parse tokenized file in region:");
             System.err.println();
             System.err.println("(...)");
-            System.err.println(tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
-                                tokens.remove().getToken()+
+            System.err.println(tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
+                                tokens.remove().getToken()+" "+
                                 tokens.remove().getToken());
             System.err.println("(...)");
 
