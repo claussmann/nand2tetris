@@ -41,7 +41,7 @@ public class Tokenizer {
                 continue;
             }
             if(tmp.contains("/*") && tmp.contains("*/")){
-                tmp=tmp.substring(tmp.indexOf("/*"), tmp.indexOf("*/"));
+                tmp=tmp.substring(0, tmp.indexOf("/*")) + tmp.substring(tmp.indexOf("*/")+2);
                 ret.add(tmp);
                 continue;
             }
