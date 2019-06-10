@@ -16,6 +16,7 @@ public class Tokenizer {
     String identifier = "[a-zA-Z]+";
 
     public Queue<Token> tokenize(List<String> rawInput){
+        rawInput = removeComments(rawInput);
         Queue<Token> tokens = new LinkedList<Token>();
         for(String line : rawInput){
             String pattern = "("+keywords+"|"+symbols+"|"+identifier+"|"+intConst+"|"+stringConst+")";
@@ -27,6 +28,32 @@ public class Tokenizer {
             }
         }
         return tokens;
+    }
+
+    private List<String> removeComments(List<String> rawInput) {
+        List<String> ret = new ArrayList<>();
+        String tmp;
+        for (int i=0; i<rawInput.size(); i++) {
+            tmp=rawInput.get(i);
+            if(tmp.contains("//")){
+                tmp=tmp.substring(0, tmp.indexOf("//"));
+                ret.add(tmp);
+                continue;
+            }
+            if(tmp.contains("/*") && tmp.contains("*/")){
+                tmp=tmp.substring(tmp.indexOf("/*"), tmp.indexOf("*/"));
+                ret.add(tmp);
+                continue;
+            }
+            if(tmp.contains("/*")){
+                while (!rawInput.get(i).contains("*/")){
+                    i++;
+                }
+                continue;
+            }
+            ret.add(tmp);
+        }
+        return ret;
     }
 
     private Token genTokenOf(String token) {
