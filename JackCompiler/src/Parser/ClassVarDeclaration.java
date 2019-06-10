@@ -8,7 +8,7 @@ import java.util.Queue;
 public class ClassVarDeclaration {
 
     KeyWord fieldType;
-    KeyWord fieldDataType;
+    DataType fieldDataType;
     Identifier varName;
     Symbol semicolon;
 
@@ -19,7 +19,7 @@ public class ClassVarDeclaration {
 
     private void parse(Queue<Token> tokens) {
         fieldType = (KeyWord)tokens.remove();
-        fieldDataType = (KeyWord)tokens.remove();
+        fieldDataType = (DataType)tokens.remove();
         varName = (Identifier)tokens.remove();
         semicolon = (Symbol)tokens.remove();
     }

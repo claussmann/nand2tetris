@@ -1,6 +1,8 @@
 package Token;
 
-public class KeyWord extends Token {
+import Parser.DataType;
+
+public class KeyWord extends Token implements DataType {
     private String token;
 
     public KeyWord(String token) {
