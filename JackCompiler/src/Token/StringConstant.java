@@ -2,7 +2,7 @@ package Token;
 
 import Parser.Term;
 
-public class StringConstant extends Token implements Term {
+public class StringConstant extends Token {
     private String token;
 
     public StringConstant(String token) {

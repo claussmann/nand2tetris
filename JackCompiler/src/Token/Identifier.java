@@ -1,9 +1,8 @@
 package Token;
 
 import Parser.DataType;
-import Parser.Term;
 
-public class Identifier extends Token implements Term, DataType {
+public class Identifier extends Token implements DataType {
 
     private String token;
 

@@ -1,8 +1,7 @@
 package Token;
 
-import Parser.Term;
 
-public class IntegerConstant extends Token implements Term {
+public class IntegerConstant extends Token {
     private String token;
 
     public IntegerConstant(String token) {

@@ -13,11 +13,11 @@ public class Expression {
     private Term term2;
 
     public Expression(Queue<Token> tokens){
-        term = (Term)tokens.remove();
+        term = new Term(tokens);
         String tmp = tokens.peek().getToken();
         if(tmp.equals("+")|| tmp.equals("-") || tmp.equals("=") || tmp.equals("<") || tmp.equals(">")){
             op = (Symbol)tokens.remove();
-            term2 = (Term)tokens.remove();
+            term2 = new Term(tokens);
         }
     }
 
@@ -27,14 +27,10 @@ public class Expression {
 
     public void toXML(PrintStream printStream) {
         printStream.println("<expression>");
-        printStream.println("<term>");
-        printStream.println(term.toXML());
-        printStream.println("</term>");
+        term.toXML(printStream);
         if(op != null){
             printStream.println(op.toXML());
-            printStream.println("<term>");
-            printStream.println(term2.toXML());
-            printStream.println("</term>");
+            term.toXML(printStream);
         }
         printStream.println("</expression>");
     }
