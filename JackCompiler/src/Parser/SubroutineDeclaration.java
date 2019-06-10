@@ -10,7 +10,7 @@ import java.util.Queue;
 public class SubroutineDeclaration {
 
     KeyWord methodType;
-    KeyWord returnType;
+    DataType returnType;
     Identifier routineName;
     Symbol openParam;
     Symbol closeParam;
@@ -29,7 +29,7 @@ public class SubroutineDeclaration {
     private void parse(Queue<Token> tokens) {
 
         methodType = (KeyWord)tokens.remove();
-        returnType = (KeyWord)tokens.remove();
+        returnType = (DataType)tokens.remove();
         routineName = (Identifier)tokens.remove();
         openParam = (Symbol)tokens.remove();
         parameterList = new ArrayList<>();
@@ -40,7 +40,7 @@ public class SubroutineDeclaration {
         open = (Symbol)tokens.remove();
         vars = new ArrayList<>();
         while (! isStatementBeginning(tokens.peek())){
-            parameterList.add(new Parameter(tokens));
+            vars.add(new VarDeclaration());
         }
         statements = new Statements();
         while (isStatementBeginning(tokens.peek())){
