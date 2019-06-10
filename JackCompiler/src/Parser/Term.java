@@ -9,19 +9,32 @@ import java.util.Queue;
 
 public class Term {
 
+    Symbol invert;
     Token single;
+    Expression inner;
+    Token innerOpen;
+    Token innerClose;
     Identifier call;
     List<Token> callstack;
 
     public Term(Queue<Token> tokens){
         callstack = new ArrayList<>();
         Token t = tokens.remove();
-        if(t.getClass().equals(StringConstant.class)
-                || t.getClass().equals(IntegerConstant.class)){
+        if(t.getToken().equals("~")){
+            invert=(Symbol)t;
+            System.out.println(tokens.peek().toXML());
+            t=tokens.remove();
+        }
+        if(t.getToken().equals("(")){
+            innerOpen=t;
+            inner=new Expression(tokens);
+            innerClose=tokens.remove();
+        }
+        if(t.getClass().equals(StringConstant.class) || t.getClass().equals(IntegerConstant.class)){
             single=t;
         }
         else {
-            if(isTermEnd(tokens.peek().getToken())){
+            if(isTermEnd(tokens.peek().getToken()) || tokens.peek().getToken().equals(")")){
                 single=t;
             }
             else {
@@ -35,8 +48,16 @@ public class Term {
 
     void toXML(PrintStream printStream){
         printStream.println("<term>");
+        if(invert!=null){
+            printStream.println(invert.toXML());
+        }
         if(single!=null){
             printStream.println(single.toXML());
+        }
+        else if(innerOpen != null){
+            printStream.println(innerOpen);
+            inner.toXML(printStream);
+            printStream.println(innerClose);
         }
         else {
             printStream.println(call.toXML());
@@ -48,6 +69,11 @@ public class Term {
     }
 
     private boolean isTermEnd(String s){
-        return s.equals(";") || s.equals("+") || s.equals("<") || s.equals("-") || s.equals(">") || s.equals("=");
+        return s.equals(";")
+                || s.equals("+")
+                || s.equals("<")
+                || s.equals("-")
+                || s.equals(">")
+                || s.equals("=");
     }
 }
