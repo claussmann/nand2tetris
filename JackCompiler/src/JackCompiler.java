@@ -39,7 +39,7 @@ public class JackCompiler {
             e.printStackTrace();
             System.err.println("Failed to parse in region:");
             for(int i=0; i<10;i++){
-                System.out.print(tokens.remove().toXML());
+                System.out.print(tokens.remove().toString()+" ");
             }
             System.exit(-1);
         }
