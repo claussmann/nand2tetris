@@ -19,11 +19,9 @@ public class Parameter {
     }
 
     public void toXML(PrintStream printStream) {
-        printStream.println("<parameter>");
         printStream.println(type.toXML());
         printStream.println(name.toXML());
         if(comma!=null) printStream.println(comma.toXML());
-        printStream.println("</parameter>");
     }
 
     public boolean isValid() {
