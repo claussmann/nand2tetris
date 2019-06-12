@@ -2,8 +2,6 @@ package Token;
 
 
 public class IntegerConstant extends Token {
-    private String token;
-
     public IntegerConstant(String token) {
 
         this.token = token;
@@ -14,7 +12,4 @@ public class IntegerConstant extends Token {
         return "<integerConstant>"+token+"</integerConstant>";
     }
 
-    public String getToken(){
-        return token;
-    }
 }

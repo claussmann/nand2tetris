@@ -66,11 +66,11 @@ public class SubroutineDeclaration {
     }
 
     private boolean isStatementBeginning(Token token){
-        return token.getToken().equals("let")
-                ||token.getToken().equals("if")
-                ||token.getToken().equals("while")
-                ||token.getToken().equals("do")
-                ||token.getToken().equals("return");
+        return token.equals("let")
+                ||token.equals("if")
+                ||token.equals("while")
+                ||token.equals("do")
+                ||token.equals("return");
     }
 
     public void toXML(PrintStream printStream) {
@@ -94,5 +94,9 @@ public class SubroutineDeclaration {
         printStream.println(close.toXML());
         printStream.println("</subroutineBody>");
         printStream.println("</subroutineDec>");
+    }
+
+    public boolean isValid() {
+        return true;
     }
 }

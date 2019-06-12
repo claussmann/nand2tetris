@@ -27,17 +27,19 @@ public class Program {
         className = (Identifier) tokens.remove();
         open = (Symbol) tokens.remove();
         classVars = new ArrayList<>();
-        while (! (tokens.peek().getToken().equals("constructor")
-                ||tokens.peek().getToken().equals("function")
-                ||tokens.peek().getToken().equals("method"))){
+        while (! (tokens.peek().equals("constructor")
+                ||tokens.peek().equals("function")
+                ||tokens.peek().equals("method"))){
             classVars.add(new ClassVarDeclaration(tokens));
         }
         routines = new ArrayList<>();
-        while (! tokens.peek().getToken().equals("}")){
+        while (! tokens.peek().equals("}")){
             routines.add(new SubroutineDeclaration(tokens));
         }
         close = (Symbol) tokens.remove();
     }
+
+
 
     public void toXML(PrintStream printStream) {
         printStream.println("<class>");

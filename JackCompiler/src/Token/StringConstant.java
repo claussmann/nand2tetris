@@ -1,9 +1,6 @@
 package Token;
 
-import Parser.Term;
-
 public class StringConstant extends Token {
-    private String token;
 
     public StringConstant(String token) {
 
@@ -13,9 +10,5 @@ public class StringConstant extends Token {
     @Override
     public String toXML() {
         return "<stringConst>"+token+"</stringConst>";
-    }
-
-    public String getToken(){
-        return token;
     }
 }

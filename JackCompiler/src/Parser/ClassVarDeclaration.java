@@ -32,4 +32,9 @@ public class ClassVarDeclaration {
         printStream.println(semicolon.toXML());
         printStream.println("</classVarDec>");
     }
+
+    public boolean isValid() {
+        System.out.println("Checking ClassVarDeclaration "+varName);
+        return true;
+    }
 }

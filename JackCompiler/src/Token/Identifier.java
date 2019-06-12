@@ -4,8 +4,6 @@ import Parser.DataType;
 
 public class Identifier extends Token implements DataType {
 
-    private String token;
-
     public Identifier(String token) {
 
         this.token = token;
@@ -16,7 +14,4 @@ public class Identifier extends Token implements DataType {
         return "<identifier>"+token+"</identifier>";
     }
 
-    public String getToken(){
-        return token;
-    }
 }

@@ -3,8 +3,6 @@ package Token;
 import Parser.DataType;
 
 public class KeyWord extends Token implements DataType {
-    private String token;
-
     public KeyWord(String token) {
 
         this.token = token;
@@ -15,7 +13,4 @@ public class KeyWord extends Token implements DataType {
         return "<keyword>"+token+"</keyword>";
     }
 
-    public String getToken(){
-        return token;
-    }
 }
