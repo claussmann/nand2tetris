@@ -27,7 +27,7 @@ public class JackCompiler {
         Queue<Token> tokens = tokenizer.tokenize(allLines);
 
         PrintStream printStream = new PrintStream(new FileOutputStream(args[0] + "T.xml"));
-        System.out.println("Printing Tokens to "+args[0]+"T.xml");
+        System.out.println("Printing Tokens to "+args[0]+"T.xml\n\n");
         for (Token token:tokens){
             printStream.println(token.toXML());
         }
