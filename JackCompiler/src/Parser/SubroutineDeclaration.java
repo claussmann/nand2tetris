@@ -55,6 +55,8 @@ public class SubroutineDeclaration {
                 return new LetStatement(tokens);
             case "if":
                 return new IfStatement(tokens);
+            case "else":
+                return new ElseStatement(tokens);
             case "while":
                 return new WhileStatement(tokens);
             case "do":
@@ -68,6 +70,7 @@ public class SubroutineDeclaration {
     private boolean isStatementBeginning(Token token){
         return token.equals("let")
                 ||token.equals("if")
+                ||token.equals("else")
                 ||token.equals("while")
                 ||token.equals("do")
                 ||token.equals("return");
