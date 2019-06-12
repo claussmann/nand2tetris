@@ -21,6 +21,10 @@ public class ClassVarDeclaration {
         fieldType = (KeyWord)tokens.remove();
         fieldDataType = (DataType)tokens.remove();
         varName = (Identifier)tokens.remove();
+        while (!tokens.peek().equals(";")){
+            tokens.remove();
+            //TODO: additional variables in same declaration need to be parsed here...
+        }
         semicolon = (Symbol)tokens.remove();
     }
 

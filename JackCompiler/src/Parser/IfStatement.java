@@ -26,7 +26,7 @@ public class IfStatement extends Statement {
         bodyOpen = (Symbol)tokens.remove();
         statements = new Statements();
         while (isStatementBeginning(tokens.peek())){
-            toStatement(tokens);
+            statements.add(toStatement(tokens));
         }
         bodyClose = (Symbol)tokens.remove();
     }

@@ -28,9 +28,11 @@ public class JackCompiler {
 
         PrintStream printStream = new PrintStream(new FileOutputStream(args[0] + "T.xml"));
         System.out.println("Printing Tokens to "+args[0]+"T.xml\n\n");
+        printStream.println("<tokens>");
         for (Token token:tokens){
             printStream.println(token.toXML());
         }
+        printStream.println("</tokens>");
 
         Program program = new Program(tokens);
         try{
