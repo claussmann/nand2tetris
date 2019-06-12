@@ -16,6 +16,10 @@ public class VarDeclaration {
         varKeyword = (KeyWord) tokens.remove();
         type = (DataType) tokens.remove();
         name = (Identifier) tokens.remove();
+        while (!tokens.peek().equals(";")){
+            tokens.remove();
+            //TODO: additional variables in same declaration need to be parsed here...
+        }
         semicolon = (Symbol) tokens.remove();
     }
 
