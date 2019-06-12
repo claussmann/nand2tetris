@@ -6,9 +6,7 @@ import java.io.PrintStream;
 import java.util.Queue;
 
 public abstract class Statement {
-    boolean validate() {
-        return true;
-    }
+    abstract boolean isValid();
     boolean isStatementBeginning(Token token){
         return token.getToken().equals("let")
                 ||token.getToken().equals("if")
@@ -17,7 +15,7 @@ public abstract class Statement {
                 ||token.getToken().equals("return");
     }
 
-    Statement getStatement(Queue<Token> tokens) {
+    Statement toStatement(Queue<Token> tokens) {
         switch (tokens.peek().getToken()){
             case "let":
                 return new LetStatement(tokens);

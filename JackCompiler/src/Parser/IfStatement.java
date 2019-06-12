@@ -26,19 +26,19 @@ public class IfStatement extends Statement {
         bodyOpen = (Symbol)tokens.remove();
         statements = new Statements();
         while (isStatementBeginning(tokens.peek())){
-            getStatement(tokens);
+            toStatement(tokens);
         }
         bodyClose = (Symbol)tokens.remove();
     }
 
 
-    boolean validate() {
-        return keywordIf.getToken().equals("if")
-                && symbolOpen.getToken().equals("(")
-                && symbolClose.getToken().equals(")")
+    boolean isValid() {
+        return keywordIf.equals("if")
+                && symbolOpen.equals("(")
+                && symbolClose.equals(")")
                 && expression.validate()
-                && bodyOpen.getToken().equals("{")
-                && bodyClose.getToken().equals("}")
+                && bodyOpen.equals("{")
+                && bodyClose.equals("}")
                 && statements.validate();
     }
 

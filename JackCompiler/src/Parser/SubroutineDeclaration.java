@@ -97,6 +97,43 @@ public class SubroutineDeclaration {
     }
 
     public boolean isValid() {
+        System.out.println("..Checking method declaration " + routineName);
+        if(!(methodType.equals("constructor") || methodType.equals("method") || methodType.equals("function"))){
+            System.err.println("Invalid function-type : " + methodType);
+            return false;
+        }
+        if(!(returnType.equals("void") || returnType.equals("int") || returnType.equals("boolean")
+                || returnType.equals("char") || returnType.getClass().equals(Identifier.class))){
+            System.err.println("Invalid datatype : " + methodType);
+            return false;
+        }
+        if(!openParam.equals("(")){
+            System.err.println("Expected '(' but was "+openParam);
+            return false;
+        }
+        if(!closeParam.equals(")")){
+            System.err.println("Expected ')' but was "+closeParam);
+            return false;
+        }
+        if(!open.equals("{")){
+            System.err.println("Expected '{' but was "+open);
+            return false;
+        }
+        if(!close.equals("}")){
+            System.err.println("Expected '}' but was "+close);
+            return false;
+        }
+        for(Parameter p : parameterList){
+            if(!p.isValid()){
+                return false;
+            }
+        }
+        for(VarDeclaration v : vars){
+            if(!v.isValid()){
+                return false;
+            }
+        }
+        statements.validate();
         return true;
     }
 }

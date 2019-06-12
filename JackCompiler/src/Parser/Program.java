@@ -39,7 +39,29 @@ public class Program {
         close = (Symbol) tokens.remove();
     }
 
-
+    public boolean isValid(){
+        System.out.println("Checking class "+className);
+        if (!classKeyword.equals("class")){
+            System.err.println("Expected keyword 'class' but was "+classKeyword);
+            return false;
+        }
+        if (!open.equals("{")){
+            System.err.println("Expected '{' but was "+open);
+            return false;
+        }
+        if (!close.equals("}")){
+            System.err.println("Expected '}' but was "+close);
+            return false;
+        }
+        for(ClassVarDeclaration declaration: classVars){
+            if(!declaration.isValid()) return false;
+        }
+        for(SubroutineDeclaration declaration: routines){
+            if(!declaration.isValid()) return false;
+        }
+        System.out.println("\nCheck Successful!\n");
+        return true;
+    }
 
     public void toXML(PrintStream printStream) {
         printStream.println("<class>");

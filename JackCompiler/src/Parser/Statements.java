@@ -15,7 +15,8 @@ public class Statements {
 
     boolean validate() {
         for (Statement s:list){
-            if(!s.validate()){
+            System.out.println("....checking statement "+s.getClass());
+            if(!s.isValid()){
                 return false;
             }
         }

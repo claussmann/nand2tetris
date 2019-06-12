@@ -21,11 +21,11 @@ public class LetStatement extends Statement {
         semicolon = (Symbol)tokens.remove();
     }
 
-    boolean validate() {
+    boolean isValid() {
         return let.getToken().equals("let")
-                && equals.getToken().equals("=")
+                && equals.equals("=")
                 && expression.validate()
-                && semicolon.getToken().equals(";");
+                && semicolon.equals(";");
     }
 
     @Override

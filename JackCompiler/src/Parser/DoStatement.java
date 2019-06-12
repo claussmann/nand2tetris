@@ -22,6 +22,11 @@ public class DoStatement extends Statement {
     }
 
     @Override
+    boolean isValid() {
+        return doKeyword.equals("do") && semicolon.equals(";");
+    }
+
+    @Override
     public void toXML(PrintStream printStream) {
         printStream.println("<doStatement>");
         printStream.println(doKeyword.toXML());

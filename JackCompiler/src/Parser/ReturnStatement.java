@@ -18,6 +18,14 @@ public class ReturnStatement extends Statement {
     }
 
     @Override
+    boolean isValid() {
+        if(expression!=null){
+            return retKeyword.equals("return") && semicolon.equals(";") && expression.validate();
+        }
+        return retKeyword.equals("return") && semicolon.equals(";");
+    }
+
+    @Override
     public void toXML(PrintStream printStream) {
         printStream.println("<returnStatement>");
         printStream.println(retKeyword.toXML());

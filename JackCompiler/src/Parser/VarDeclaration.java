@@ -28,4 +28,23 @@ public class VarDeclaration {
         printStream.println(semicolon.toXML());
         printStream.println("</varDec>");
     }
+
+    public boolean isValid() {
+        System.out.println("....checking variable declaration "+name);
+        if(!varKeyword.equals("var")){
+            System.err.println("Expected Keyword 'var' but was "+varKeyword);
+            return false;
+        }
+        if(type.getClass().equals(KeyWord.class)){
+            if(!(type.equals("int") || type.equals("char") || type.equals("boolean"))){
+                System.err.println("Unvalid datatype: "+type);
+                return false;
+            }
+        }
+        if(!semicolon.equals(";")){
+            System.err.println("Expected ';' but was "+semicolon);
+            return false;
+        }
+        return true;
+    }
 }
