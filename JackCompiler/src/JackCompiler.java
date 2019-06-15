@@ -26,8 +26,8 @@ public class JackCompiler {
         Tokenizer tokenizer=new Tokenizer();
         Queue<Token> tokens = tokenizer.tokenize(allLines);
 
-        PrintStream printStream = new PrintStream(new FileOutputStream(args[0] + "T.xml"));
-        System.out.println("Printing Tokens to "+args[0]+"T.xml\n\n");
+        PrintStream printStream = new PrintStream(new FileOutputStream(args[0].replace(".jack","") + "T.xml"));
+        System.out.println("Printing Tokens to "+args[0].replace(".jack","")+"T.xml\n\n");
         printStream.println("<tokens>");
         for (Token token:tokens){
             printStream.println(token.toXML());
@@ -47,8 +47,8 @@ public class JackCompiler {
         }
 
         if(program.isValid()) {
-            System.out.println("Writing to "+args[0]+".xml");
-            PrintStream printStream2 = new PrintStream(new FileOutputStream(args[0] + ".xml"));
+            System.out.println("Writing to "+args[0].replace(".jack","")+".xml");
+            PrintStream printStream2 = new PrintStream(new FileOutputStream(args[0].replace(".jack","") + ".xml"));
             program.toXML(printStream2);
         }
     }
