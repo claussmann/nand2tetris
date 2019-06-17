@@ -1,3 +1,5 @@
+import CodeGeneration.CodeWriter;
+import CodeGeneration.Symbol;
 import Token.Token;
 
 import java.io.FileOutputStream;
@@ -51,5 +53,8 @@ public class JackCompiler {
             PrintStream printStream2 = new PrintStream(new FileOutputStream(args[0].replace(".jack","") + ".xml"));
             program.toXML(printStream2);
         }
+
+        CodeWriter writer = new CodeWriter();
+        writer.toCode(System.out, program);
     }
 }

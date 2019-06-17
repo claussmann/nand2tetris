@@ -51,4 +51,12 @@ public class VarDeclaration {
         }
         return true;
     }
+
+    public String getDatatype(){
+        return type.toString();
+    }
+
+    public String getName(){
+        return name.toString();
+    }
 }

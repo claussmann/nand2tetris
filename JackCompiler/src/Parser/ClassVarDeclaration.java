@@ -59,4 +59,16 @@ public class ClassVarDeclaration {
         }
         return true;
     }
+
+    public String getFieldType(){
+        return fieldType.toString();
+    }
+
+    public String getVarName(){
+        return varName.toString();
+    }
+
+    public String getDatatype(){
+        return fieldDataType.toString();
+    }
 }

@@ -139,4 +139,12 @@ public class SubroutineDeclaration {
         statements.validate();
         return true;
     }
+
+    public List<VarDeclaration> getVars() {
+        return vars;
+    }
+
+    public List<Parameter> getParameterList() {
+        return parameterList;
+    }
 }

@@ -80,4 +80,16 @@ public class Program {
         printStream.println(close.toXML());
         printStream.println("</class>");
     }
+
+    public String getClassname(){
+        return className.toString();
+    }
+
+    public List<ClassVarDeclaration> getClassVars() {
+        return classVars;
+    }
+
+    public List<SubroutineDeclaration> getRoutines(){
+        return routines;
+    }
 }
