@@ -3,6 +3,7 @@ package CodeGeneration;
 import Parser.*;
 
 import java.io.PrintStream;
+import java.util.List;
 
 public class CodeWriter {
     String classname;
@@ -21,10 +22,16 @@ public class CodeWriter {
         }
 
         for(SubroutineDeclaration sub: program.getRoutines()){
-            //if method: put 'this' reference in map.
+            int parametercount = 0;
+            if(sub.isMethod()){
+                parametercount++;
+                classSymbolTable.add("this",classname, "argument");
+            }
             for(Parameter pam: sub.getParameterList()){
                 classSymbolTable.add(pam.getName(),pam.getDatatype(), "argument");
+                parametercount++;
             }
+            stream.println("function "+sub.getName()+ " "+parametercount);
             for(VarDeclaration var: sub.getVars()){
                 classSymbolTable.add(var.getName(),var.getDatatype(), "local");
                 stream.println("push constant 0");
