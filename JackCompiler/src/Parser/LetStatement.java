@@ -42,7 +42,8 @@ public class LetStatement extends Statement {
 
     @Override
     public void toVM(SymbolTable classSymbolTable, PrintStream stream) {
-
+        expression.toVM(classSymbolTable,stream);
+        stream.println("pop " + classSymbolTable.getLocation(variable.toString()));
     }
 
 }
