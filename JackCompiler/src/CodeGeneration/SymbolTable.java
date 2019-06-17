@@ -19,10 +19,22 @@ public class SymbolTable {
 
     public void add(String varName, String type, String kind){
         int tmp = 0;
-        if(kind.equals("field")) tmp=countField;
-        if(kind.equals("static")) tmp=countStatic;
-        if(kind.equals("argument")) tmp=countArgument;
-        if(kind.equals("local")) tmp=countLocal;
+        if(kind.equals("field")) {
+            tmp=countField;
+            countField++;
+        }
+        if(kind.equals("static")) {
+            tmp=countStatic;
+            countStatic++;
+        }
+        if(kind.equals("argument")) {
+            tmp=countArgument;
+            countArgument++;
+        }
+        if(kind.equals("local")) {
+            tmp=countLocal;
+            countLocal++;
+        }
         table.put(new Symbol(varName,type), new StackLocation(kind, tmp));
     }
 

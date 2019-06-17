@@ -16,6 +16,8 @@ public class CodeWriter {
         classname=program.getClassname();
         for(ClassVarDeclaration dec : program.getClassVars()){
             classSymbolTable.add(dec.getVarName(), dec.getFieldType(), dec.getDatatype());
+            stream.println("push constant 0");
+            stream.println("pop " + classSymbolTable.getLocation(dec.getVarName()));
         }
 
         for(SubroutineDeclaration sub: program.getRoutines()){
@@ -25,7 +27,10 @@ public class CodeWriter {
             }
             for(VarDeclaration var: sub.getVars()){
                 classSymbolTable.add(var.getName(),var.getDatatype(), "local");
+                stream.println("push constant 0");
+                stream.println("pop " + classSymbolTable.getLocation(var.getName()));
             }
+
         }
     }
 }
