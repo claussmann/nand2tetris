@@ -1,5 +1,6 @@
 package Parser;
 
+import CodeGeneration.SymbolTable;
 import Token.KeyWord;
 import Token.Symbol;
 import Token.Token;
@@ -53,5 +54,10 @@ public class IfStatement extends Statement {
         statements.toXML(printStream);
         printStream.println(bodyClose.toXML());
         printStream.println("</ifStatement>");
+    }
+
+    @Override
+    public void toVM(SymbolTable classSymbolTable, PrintStream stream) {
+
     }
 }

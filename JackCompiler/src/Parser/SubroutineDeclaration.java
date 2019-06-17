@@ -147,4 +147,16 @@ public class SubroutineDeclaration {
     public List<Parameter> getParameterList() {
         return parameterList;
     }
+
+    public String getName() {
+        return routineName.toString();
+    }
+
+    public boolean isMethod() {
+        return methodType.equals("method");
+    }
+
+    public Statements getStatements() {
+        return statements;
+    }
 }

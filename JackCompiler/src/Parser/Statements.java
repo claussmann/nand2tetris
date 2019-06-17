@@ -2,6 +2,7 @@ package Parser;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Statements {
     ArrayList<Statement> list;
@@ -29,5 +30,9 @@ public class Statements {
             s.toXML(printStream);
         }
         printStream.println("</statements>");
+    }
+
+    public List<Statement> getList(){
+        return list;
     }
 }

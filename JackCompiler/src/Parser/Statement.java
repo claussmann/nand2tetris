@@ -1,5 +1,6 @@
 package Parser;
 
+import CodeGeneration.SymbolTable;
 import Token.Token;
 
 import java.io.PrintStream;
@@ -32,4 +33,6 @@ public abstract class Statement {
     }
 
     public abstract void toXML(PrintStream printStream) ;
+
+    public abstract void toVM(SymbolTable classSymbolTable, PrintStream stream);
 }

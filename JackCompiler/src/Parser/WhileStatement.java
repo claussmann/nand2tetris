@@ -1,5 +1,6 @@
 package Parser;
 
+import CodeGeneration.SymbolTable;
 import Token.KeyWord;
 import Token.Symbol;
 import Token.Token;
@@ -56,5 +57,9 @@ public class WhileStatement extends Statement {
         printStream.println("</whileStatement>");
     }
 
+    @Override
+    public void toVM(SymbolTable classSymbolTable, PrintStream stream) {
+
+    }
 
 }

@@ -38,6 +38,11 @@ public class CodeWriter {
                 stream.println("pop " + classSymbolTable.getLocation(var.getName()));
             }
 
+
+            List<Statement> statements = sub.getStatements().getList();
+            for(Statement s : statements){
+                s.toVM(classSymbolTable, stream);
+            }
         }
     }
 }

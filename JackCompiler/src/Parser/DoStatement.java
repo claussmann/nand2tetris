@@ -1,5 +1,6 @@
 package Parser;
 
+import CodeGeneration.SymbolTable;
 import Token.*;
 
 import java.io.PrintStream;
@@ -36,4 +37,10 @@ public class DoStatement extends Statement {
         printStream.println(semicolon.toXML());
         printStream.println("</doStatement>");
     }
+
+    @Override
+    public void toVM(SymbolTable classSymbolTable, PrintStream stream) {
+
+    }
+
 }

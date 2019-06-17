@@ -1,5 +1,6 @@
 package Parser;
 
+import CodeGeneration.SymbolTable;
 import Token.KeyWord;
 import Token.Symbol;
 import Token.Token;
@@ -41,4 +42,10 @@ public class ElseStatement extends Statement{
         printStream.println(bodyClose.toXML());
         printStream.println("</elseStatement>");
     }
+
+    @Override
+    public void toVM(SymbolTable classSymbolTable, PrintStream stream) {
+
+    }
+
 }
